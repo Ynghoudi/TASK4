@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+const int ROWS1 = 5;
+const int COLS1 = 10;
+const int ROWS2 = 5;
+const int COLS2 = 5;
+
+int main() {
+    int arr1[ROWS1][COLS1];
+    int arr2[ROWS2][COLS2];
+
+    srand(time(0));
+    for(int i = 0; i < ROWS1; i++) {
+        for(int j = 0; j < COLS1; j++) {
+            arr1[i][j] = rand() % 51;
+        }
+    }
+
+    for(int i = 0; i < ROWS2; i++) {
+        for(int j = 0; j < COLS2; j++) {
+            arr2[i][j] = arr1[i][2*j] + arr1[i][2*j+1];
+        }
+    }
+
+    std::cout << "Первый массив:\n";
+    for(int i = 0; i < ROWS1; i++) {
+        for(int j = 0; j < COLS1; j++) {
+            std::cout << arr1[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "\nВторой массив:\n";
+    for(int i = 0; i < ROWS2; i++) {
+        for(int j = 0; j < COLS2; j++) {
+            std::cout << arr2[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
